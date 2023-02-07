@@ -1,0 +1,58 @@
+﻿<Window x:Class="Tekla3DRebarVisualizer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:ui="http://schemas.trimble.com/fusion"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tekla3DRebarVisualizer"
+        Icon="TeklaVisualizerIcon.ico"
+        mc:Ignorable="d"
+        Title="Tekla 3D Rebar Visualizer" Height="330" Width="420">
+    <StackPanel Margin="0,150,0,0">
+        <Border>
+            <ItemsControl ItemsSource="{Binding Path=RebarCanvasLines}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate >
+                        <Canvas Background="White" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.Resources>
+                    <DataTemplate DataType="lineCanvas">
+                        <Line X1="{Binding X1}" Y1="{Binding Y1}" X2="{Binding X2}" Y2="{Binding Y2}" Stroke="Black" StrokeThickness="3"></Line>
+                    </DataTemplate>
+                    <DataTemplate DataType="rectangleCanvas">
+                        <Rectangle Width="{Binding Width}" Height="{Binding Height}"></Rectangle>
+                    </DataTemplate>
+                </ItemsControl.Resources>
+            </ItemsControl>
+        </Border>
+        <StackPanel Orientation="Horizontal">
+            <Label Grid.Row="0" Grid.Column="0" Content="Rotation by AxisX:" VerticalAlignment="Center"/>
+            <Slider Value="{Binding MatrixRotateByX}" VerticalAlignment="Center" Width="150" Minimum="-180" Maximum="180" Margin="0,0,20,0" IsMoveToPointEnabled="True" TickFrequency = "1"/>
+            <Label Grid.Row="0" Grid.Column="0" Content="{Binding MatrixRotateByXLabel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Grid.Row="0" Grid.Column="0" Content="Rotation by AxisY:" VerticalAlignment="Center"/>
+            <Slider Value="{Binding MatrixRotateByY}" VerticalAlignment="Center" Width="150" Minimum="-180" Maximum="180" Margin="0,0,20,0" IsMoveToPointEnabled="True" TickFrequency = "1"/>
+            <Label Grid.Row="0" Grid.Column="0" Content="{Binding MatrixRotateByYLabel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Grid.Row="0" Grid.Column="0" Content="Rotation by AxisZ:" VerticalAlignment="Center"/>
+            <Slider Value="{Binding MatrixRotateByZ}" VerticalAlignment="Center" Width="150" Minimum="-180" Maximum="180" Margin="0,0,20,0" IsMoveToPointEnabled="True" TickFrequency = "1"/>
+            <Label Grid.Row="0" Grid.Column="0" Content="{Binding MatrixRotateByZLabel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Scale :"/>
+            <TextBox Text="{Binding PulloutScale}" Width="40"/>
+            <Label Content="Line prop. :"/>
+            <TextBox Text="{Binding PulloutLineProp}" Width="80"/>
+            <Label Content="Text prop. :"/>
+            <TextBox Text="{Binding PulloutTextProp}" Width="80"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="GetRebar" Command="{ui:CommandHandler GetRebarPulloutPicture}" Content="Select rebar" Margin="10,2"/>
+            <Button x:Name="InsertRebar" Command="{ui:CommandHandler InsertRebarPicture}" Content="Insert pullout picture" Margin="10,2"/>
+            <Button x:Name="DemoData" Command="{ui:CommandHandler PrepareDemoData}" Visibility="Hidden"  Content="Load demo data" Margin="10,2"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

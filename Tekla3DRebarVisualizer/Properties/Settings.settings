@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Tekla3DRebarVisualizer.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MatrixRotateByX" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="MatrixRotateByY" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="MatrixRotateByZ" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="PulloutScale" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="PulloutLineProp" Type="System.String" Scope="User">
+      <Value Profile="(Default)">standard</Value>
+    </Setting>
+    <Setting Name="PulloutTextProp" Type="System.String" Scope="User">
+      <Value Profile="(Default)">standard</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
